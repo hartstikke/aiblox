@@ -8,18 +8,19 @@ function configurator() {
   const amounts = document.querySelectorAll('input[name="amount"]')
 
   const generateSummary = () => {
+    // TODO: consts should be checked if exists with ? operator
     const interfaceModule = document.querySelector(
       'input[name="interface-module"]:checked'
-    ).value
+    )?.value
     const communicationModule = document.querySelector(
       'input[name="communication-module"]:checked'
-    ).value
+    )?.value
     const display = document.querySelector(
       'input[name="display"]:checked'
-    ).value
+    )?.value
     const processor = document.querySelector(
       'input[name="processor"]:checked'
-    ).value
+    )?.value
 
     let amount
 
@@ -29,15 +30,19 @@ function configurator() {
       amount = document.querySelector('input[name="amount_custom"]').value
     }
 
+    const processorText = processor ? processor : ''
+    const displayText = display ? ', ' + display : ''
+    const interfaceModuleText = interfaceModule ? ', ' + interfaceModule : ''
+    const communicationModuleText = communicationModule
+      ? ', ' + communicationModule
+      : ''
+
     document.querySelector('.configurator_summary_number').textContent = amount
     const summaryText =
-      processor +
-      ', ' +
-      display +
-      ', ' +
-      interfaceModule +
-      ', ' +
-      communicationModule
+      processorText +
+      displayText +
+      interfaceModuleText +
+      communicationModuleText
     document.querySelector('.configurator_summary_details').textContent =
       summaryText
 
