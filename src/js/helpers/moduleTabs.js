@@ -5,7 +5,7 @@ import $ from 'jquery'
 gsap.registerPlugin(ScrollTrigger)
 // Link timelines to scroll position
 function moduleTabs() {
-  $('.module_component').each(function () {
+  $('.module_component:not([data-ignore])').each(function () {
     // Store reference to the current module component
     let $moduleComponent = $(this)
     let myTimer

@@ -1,15 +1,17 @@
 import { defineConfig } from 'vite'
 import eslintPlugin from 'vite-plugin-eslint'
 
-// vite.config.js
 export default defineConfig({
   plugins: [eslintPlugin({ cache: false })],
   server: {
     host: 'localhost',
-    cors: '*',
+    http: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Private-Network': 'true',
+    },
     hmr: {
-      host: 'localhost',
-      protocol: 'ws',
+      protocol: 'wss', // ✅ use secure WebSocket
     },
   },
   build: {

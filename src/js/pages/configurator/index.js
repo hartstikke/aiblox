@@ -6,6 +6,25 @@ gsap.registerPlugin(ScrollTrigger)
 function configurator() {
   const buttonNextToLast = document.querySelector('#btn-next-to-last')
   const amounts = document.querySelectorAll('input[name="amount"]')
+  const processors = document.querySelectorAll('input[name="processor"]')
+  const images = document.querySelectorAll('[data-image]')
+
+  processors.forEach((processor) => {
+    processor.addEventListener('change', () => {
+      let selectedProcessor = document.querySelector(
+        'input[name="processor"]:checked'
+      )
+
+      if (selectedProcessor.dataset.processor === 'blox_2') {
+        images.forEach((image) => {
+          image.dataset.active = false
+          if (image.dataset.image === 'blox_2') {
+            image.dataset.active = true
+          }
+        })
+      }
+    })
+  })
 
   const generateSummary = () => {
     // TODO: consts should be checked if exists with ? operator
@@ -37,7 +56,9 @@ function configurator() {
       ? ', ' + communicationModule
       : ''
 
-    document.querySelector('.configurator_summary_number').textContent = amount
+    document.querySelector(
+      '.configurator_summary_number'
+    ).textContent = ` ${amount}`
     const summaryText =
       processorText +
       displayText +
@@ -45,8 +66,6 @@ function configurator() {
       communicationModuleText
     document.querySelector('.configurator_summary_details').textContent =
       summaryText
-
-    console.log(summaryText)
   }
   buttonNextToLast.addEventListener('click', () => {
     generateSummary()

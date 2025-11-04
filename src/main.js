@@ -3,7 +3,6 @@ import about from './js/pages/about'
 import configurator from './js/pages/configurator'
 import home from './js/pages/home/home'
 import product from './js/pages/product'
-import './styles/style.css'
 
 // Main function to determine which scripts to run
 function main() {
