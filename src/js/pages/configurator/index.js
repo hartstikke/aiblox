@@ -19,7 +19,7 @@ function configurator() {
         images.forEach((image) => {
           image.dataset.active = false
           if (image.dataset.image === 'blox_2') {
-            image.dataset.active = true
+            image.dataset.image.active = true
           }
         })
       }
@@ -76,9 +76,6 @@ function configurator() {
       generateSummary()
     })
   })
-
-  const init = () => {}
-  init()
 }
 
 export default configurator
